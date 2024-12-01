@@ -1,4 +1,4 @@
-# Music-Store-Sql-Project
+music-store-analysis.sql
 
 Q1. Who is the senior most employee based on job title?
 
@@ -57,10 +57,10 @@ where customer.customer_id in (
 
 
 
-** Question Set 2 - Moderate **
+/* Question Set 2 - Moderate */
 
-** Q1: Write query to return the email, first name, last name, & Genre of all Rock Music listeners. 
-Return your list ordered alphabetically by email starting with A. **
+/* Q1: Write query to return the email, first name, last name, & Genre of all Rock Music listeners. 
+Return your list ordered alphabetically by email starting with A. */
 
 select *  from genre;
 select * from track;
@@ -78,9 +78,9 @@ where track_id in (
 order by email;	
 ;
 
-** Write a query that returns the artist name and total track count of top 10 rock bands
+/* Write a query that returns the artist name and total track count of top 10 rock bands
 
-**
+*/
 select artist.name, count(track.track_id ) as total_tracks
 from artist
 join album on artist.artist_id = album.artist_id
@@ -94,7 +94,7 @@ group by artist.name
 order by total_tracks desc
 limit 10;
 
-**SELECT artist.artist_id, artist.name,COUNT(artist.artist_id) AS number_of_songs
+/*SELECT artist.artist_id, artist.name,COUNT(artist.artist_id) AS number_of_songs
 FROM track
 JOIN album ON album.album_id = track.album_id
 JOIN artist ON artist.artist_id = album.artist_id
@@ -102,12 +102,12 @@ JOIN genre ON genre.genre_id = track.genre_id
 WHERE genre.name LIKE 'Rock'
 GROUP BY artist.artist_id
 ORDER BY number_of_songs DESC
-LIMIT 10; **
+LIMIT 10; */
 
 
 
-** Q3: Return all the track names that have a song length longer than the average song length. 
-Return the Name and Milliseconds for each track. Order by the song length with the longest songs listed first. **
+/* Q3: Return all the track names that have a song length longer than the average song length. 
+Return the Name and Milliseconds for each track. Order by the song length with the longest songs listed first. */
 
 select * from track;
 
@@ -119,8 +119,8 @@ where milliseconds > (
 order by milliseconds desc
 ;
 
-** we want to find out how much amount spent by each customer on artists
-? write a query to return customer name , artist name and total spent **
+/* we want to find out how much amount spent by each customer on artists
+? write a query to return customer name , artist name and total spent */
 
 select customer_id,sum(total) from invoice 
 group by customer_id;
@@ -162,9 +162,9 @@ order by 5 desc;
 
 
 
-** Q2: We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre 
+/* Q2: We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre 
 with the highest amount of purchases. Write a query that returns each country along with the top Genre. For countries where 
-the maximum number of purchases is shared return all Genres. **
+the maximum number of purchases is shared return all Genres. */
 
 WITH popular_genre AS 
 (
@@ -182,9 +182,9 @@ SELECT * FROM popular_genre WHERE RowNo <= 1
 
 
 
-** Q3: Write a query that determines the customer that has spent the most on music for each country. 
+/* Q3: Write a query that determines the customer that has spent the most on music for each country. 
 Write a query that returns the country along with the top customer and how much they spent. 
-For countries where the top amount spent is shared, provide all customers who spent this amount. **
+For countries where the top amount spent is shared, provide all customers who spent this amount. */
 
 
 with customer_with_country as(
